@@ -15,7 +15,8 @@ const Posts = () => {
   }, []);
 
   return (
-    <div>   <h1>Posts</h1>
+    <div>   
+        <h1>Posts</h1>
         {posts.map(post => (
           <div key={post.id}>
               
@@ -27,19 +28,5 @@ const Posts = () => {
   );
 };
 
-//  class Posts extends Component {
-//      componentWillMount(){
-//          fetch('https://jsonplaceholder.typicode.com/posts')
-//          .then(res=> res.json())
-//          .then(data=> console.log(data))
-//      }
-//     render() {
-//         return (
-//             <div>
-//                 <h1>posts</h1>
-//             </div>
-//         )
-//     }
-// }
 
 export default Posts;
