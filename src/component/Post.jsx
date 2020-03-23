@@ -1,13 +1,17 @@
 import React from "react";
-import { useState, useEffect } from "react";
-import axios from "axios";
+import { Component, useState, useEffect } from "react";
 import {connect } from 'react-redux'
+import {fetchPosts} from '../actions/postActions'
 
-const Posts = () => {
-return (
+class Posts extends Component {
+    componentDidMount() {
+      this.props.fetchPosts();
+    }
+render(){
+    return (
     <div>   
         <h1>Posts</h1>
-        {posts.map(post => (
+        {this.props.posts.map(post => (
           <div key={post.id}>
               
               <h2>{post.title}</h2>
@@ -17,6 +21,9 @@ return (
     </div>
   );
 };
+}
 
-
-export default Posts;
+const mapStateToProps = state =>({
+    posts: state.posts.items
+})
+export default connect(mapStateToProps, {fetchPosts})(Posts);
